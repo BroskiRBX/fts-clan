@@ -1,0 +1,378 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="FTS // INDEX" page="home">
+
+<style>
+  /* =========== HERO =========== */
+  .hero {
+    padding: 4rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta-right { color: var(--hazard); }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(7rem, 18vw, 16rem);
+    line-height: 0.82;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .hero-title .strike {
+    background: var(--hazard);
+    color: var(--bg);
+    padding: 0 0.25rem;
+    display: inline-block;
+    transform: rotate(-2deg);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-heavy);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 1.5rem;
+    border-top: 2px solid var(--hazard);
+    padding-top: 1.5rem;
+    max-width: 600px;
+  }
+
+  .hero-side {
+    border-left: 2px solid var(--hazard);
+    padding-left: 2rem;
+    font-family: var(--font-mono);
+  }
+
+  .hero-side h2 {
+    font-family: var(--font-heavy);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: var(--hazard);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-side p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .hero-side .label {
+    color: var(--ink-muted);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+  }
+
+  .hero-cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: var(--hazard);
+    color: var(--bg);
+    font-family: var(--font-heavy);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: 2px solid var(--hazard);
+    transition: all 0.15s ease-out;
+    position: relative;
+  }
+
+  .hero-cta:hover {
+    background: transparent;
+    color: var(--hazard);
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 var(--hazard);
+  }
+
+  .hero-cta::before {
+    content: '▶ ';
+  }
+
+  /* =========== MANIFESTO =========== */
+  .manifesto {
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .manifesto-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--hazard);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .manifesto-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    max-width: 1000px;
+  }
+
+  .manifesto-text em {
+    font-style: normal;
+    color: var(--hazard);
+  }
+
+  .manifesto-text .crossed {
+    text-decoration: line-through;
+    text-decoration-color: var(--blood);
+    text-decoration-thickness: 4px;
+    color: var(--ink-muted);
+  }
+
+  /* =========== STATS / TICKER =========== */
+  .ticker {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 4rem 0;
+    border-top: 4px solid var(--bg);
+    border-bottom: 4px solid var(--bg);
+  }
+
+  .ticker-track {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+    font-family: var(--font-heavy);
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .ticker-track span {
+    display: inline-block;
+    padding: 0 2rem;
+  }
+
+  .ticker-track .dot {
+    color: var(--hazard);
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* =========== PRINCIPLES GRID =========== */
+  .principles {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .principles-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+
+  .principles-header h2 {
+    font-family: var(--font-heavy);
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .principles-header .code {
+    font-family: var(--font-mono);
+    color: var(--hazard);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .principle {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .principle:hover {
+    background: var(--bg-2);
+  }
+
+  .principle:hover .principle-num {
+    color: var(--hazard);
+  }
+
+  .principle-num {
+    font-family: var(--font-heavy);
+    font-size: 4rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.2s;
+  }
+
+  .principle h3 {
+    font-family: var(--font-heavy);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .principle p {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  /* =========== MOBILE =========== */
+  @media (max-width: 800px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .hero-side {
+      border-left: none;
+      border-top: 2px solid var(--hazard);
+      padding-left: 0;
+      padding-top: 2rem;
+    }
+    .hero { padding: 2rem 1rem 3rem; }
+    .manifesto { padding: 3rem 1rem; }
+    .principles { padding: 2rem 1rem; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-meta">
+    <span>FILE NO. 001 / ROSTER ACCESS</span>
+    <span class="hero-meta-right">● TRANSMISSION ACTIVE</span>
+  </div>
+
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-title">
+        F<span class="strike">T</span>S
+      </h1>
+      <p class="hero-subtitle">A Minecraft crew operating outside protocol.</p>
+    </div>
+
+    <aside class="hero-side">
+      <h2>// DISPATCH</h2>
+      <p>We don't recruit. We don't advertise. If you're reading this, somebody sent you.</p>
+      <p>FTS is a small group of players who care more about the game than the clout. We build, we PvP, we cause problems together.</p>
+      <a href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith('/') ? '' : '/'}members`} class="hero-cta">View Roster</a>
+      <div class="label">CODE: FTS-001 // UNCLASSIFIED</div>
+    </aside>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>FUCK THE SYSTEM</span><span class="dot">✕</span>
+    <span>STAY UNGOVERNABLE</span><span class="dot">✕</span>
+    <span>FTS CREW</span><span class="dot">✕</span>
+    <span>NO GODS NO MASTERS</span><span class="dot">✕</span>
+    <span>FUCK THE SYSTEM</span><span class="dot">✕</span>
+    <span>STAY UNGOVERNABLE</span><span class="dot">✕</span>
+    <span>FTS CREW</span><span class="dot">✕</span>
+    <span>NO GODS NO MASTERS</span><span class="dot">✕</span>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="manifesto-label">// THE STATEMENT</div>
+  <p class="manifesto-text">
+    We don't <span class="crossed">follow rules</span>. We don't <span class="crossed">ask permission</span>. We play the way we want, with the people we trust. <em>That's the whole point.</em>
+  </p>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles">
+  <div class="principles-header">
+    <h2>The Code</h2>
+    <span class="code">§ FTS-DOCTRINE-V1</span>
+  </div>
+
+  <div class="principles-grid">
+    <div class="principle">
+      <div class="principle-num">01</div>
+      <h3>Loyalty First</h3>
+      <p>You ride for the crew or you don't ride at all. No snakes, no snitches, no fake friends.</p>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">02</div>
+      <h3>Game Comes First</h3>
+      <p>We play because it's fun. Not for clout, not for content, not for a leaderboard somewhere.</p>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">03</div>
+      <h3>Earn Your Spot</h3>
+      <p>Membership isn't given out. Show up. Be real. Prove you're worth the tag.</p>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">04</div>
+      <h3>No Drama</h3>
+      <p>Handle business in DMs. Keep the public stuff clean. We're a crew not a soap opera.</p>
+    </div>
+  </div>
+</section>
+
+</Base>

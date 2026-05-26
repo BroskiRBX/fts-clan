@@ -27,7 +27,6 @@
 
 <main>
 
-  <!-- HEADER -->
   <section class="roster-top">
     <div class="kicker">Personnel File</div>
     <h1 class="page-title">Active Roster</h1>
@@ -37,27 +36,28 @@
         <div class="stat-num" id="statTotal">—</div>
       </div>
       <div class="stat-block">
+        <div class="stat-label">Active</div>
+        <div class="stat-num" id="statActive">—</div>
+      </div>
+      <div class="stat-block">
         <div class="stat-label">Established</div>
         <div class="stat-num">2026</div>
       </div>
     </div>
   </section>
 
-  <!-- DIVIDER -->
   <div class="divider">
     <span class="divider-text">// MEMBERS</span>
     <span class="divider-line"></span>
     <span class="divider-text" id="dividerCount">// LOADING</span>
   </div>
 
-  <!-- LIST -->
   <section class="roster">
     <div id="memberList" class="member-list">
       <div class="loading">Loading roster...</div>
     </div>
   </section>
 
-  <!-- DIVIDER -->
   <div class="divider">
     <span class="divider-text">// END</span>
     <span class="divider-line"></span>
@@ -84,8 +84,8 @@
 </footer>
 
 <script>
-  // Load members from the JSON file
-  fetch('members.json')
+  // Load members from JSON, cache-bust so updates show immediately
+  fetch('members.json?v=' + Date.now())
     .then(response => {
       if (!response.ok) throw new Error('Could not load members file');
       return response.json();
@@ -101,35 +101,39 @@
   function renderMembers(members) {
     const list = document.getElementById('memberList');
     const total = members.length;
+    const activeCount = members.filter(m => (m.status || 'active') === 'active').length;
 
-    // Update stats
     document.getElementById('statTotal').textContent = String(total).padStart(3, '0');
-    document.getElementById('dividerCount').textContent = '// ' + String(total).padStart(3, '0') + ' ACTIVE';
+    document.getElementById('statActive').textContent = String(activeCount).padStart(3, '0');
+    document.getElementById('dividerCount').textContent = '// ' + String(activeCount).padStart(3, '0') + ' ACTIVE';
 
     if (total === 0) {
       list.innerHTML = '<div class="empty">No operatives on file.</div>';
       return;
     }
 
-    // Build the list
-    list.innerHTML = members.map((m, i) => `
-      <div class="member-row">
-        <div class="member-num">${String(i + 1).padStart(3, '0')}</div>
-        <div class="member-avatar">
-          <img src="https://mc-heads.net/avatar/${encodeURIComponent(m.name)}/64"
-               alt="${m.name}"
-               onerror="this.src='https://mc-heads.net/avatar/MHF_Steve/64'"
-               loading="lazy">
+    list.innerHTML = members.map((m, i) => {
+      const status = (m.status || 'active').toLowerCase();
+      const isInactive = status === 'inactive';
+      return `
+        <div class="member-row ${isInactive ? 'is-inactive' : ''}">
+          <div class="member-num">${String(i + 1).padStart(3, '0')}</div>
+          <div class="member-avatar">
+            <img src="https://mc-heads.net/avatar/${encodeURIComponent(m.name)}/64"
+                 alt="${m.name}"
+                 onerror="this.src='https://mc-heads.net/avatar/MHF_Steve/64'"
+                 loading="lazy">
+          </div>
+          <div class="member-info">
+            <div class="member-name">${m.name}</div>
+            <div class="member-rank">${m.rank}</div>
+          </div>
+          <div class="member-status">
+            <span class="status-pill status-${status}">${status.toUpperCase()}</span>
+          </div>
         </div>
-        <div class="member-info">
-          <div class="member-name">${m.name}</div>
-          <div class="member-rank">${m.rank}</div>
-        </div>
-        <div class="member-status">
-          <span class="status-pill">ACTIVE</span>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 </script>
 

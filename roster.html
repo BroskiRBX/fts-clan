@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FTS / Roster</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">[ FTS ]</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">/ Home</a>
+      <a href="roster.html" class="nav-link active">/ Roster</a>
+    </nav>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span class="status-text">ONLINE</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HEADER -->
+  <section class="roster-top">
+    <div class="kicker">Personnel File</div>
+    <h1 class="page-title">Active Roster</h1>
+    <div class="roster-stats" id="rosterStats">
+      <div class="stat-block">
+        <div class="stat-label">Total</div>
+        <div class="stat-num" id="statTotal">—</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-label">Established</div>
+        <div class="stat-num">2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <span class="divider-text">// MEMBERS</span>
+    <span class="divider-line"></span>
+    <span class="divider-text" id="dividerCount">// LOADING</span>
+  </div>
+
+  <!-- LIST -->
+  <section class="roster">
+    <div id="memberList" class="member-list">
+      <div class="loading">Loading roster...</div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <span class="divider-text">// END</span>
+    <span class="divider-line"></span>
+    <span class="divider-text">// CLASSIFIED</span>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">CREW</div>
+      <div class="footer-value">FTS / 2026</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">STATUS</div>
+      <div class="footer-value accent">OPERATIONAL</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">MOTTO</div>
+      <div class="footer-value">STAY UNGOVERNABLE</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Load members from the JSON file
+  fetch('members.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Could not load members file');
+      return response.json();
+    })
+    .then(members => {
+      renderMembers(members);
+    })
+    .catch(error => {
+      document.getElementById('memberList').innerHTML =
+        '<div class="error">⚠ Error loading roster: ' + error.message + '</div>';
+    });
+
+  function renderMembers(members) {
+    const list = document.getElementById('memberList');
+    const total = members.length;
+
+    // Update stats
+    document.getElementById('statTotal').textContent = String(total).padStart(3, '0');
+    document.getElementById('dividerCount').textContent = '// ' + String(total).padStart(3, '0') + ' ACTIVE';
+
+    if (total === 0) {
+      list.innerHTML = '<div class="empty">No operatives on file.</div>';
+      return;
+    }
+
+    // Build the list
+    list.innerHTML = members.map((m, i) => `
+      <div class="member-row">
+        <div class="member-num">${String(i + 1).padStart(3, '0')}</div>
+        <div class="member-avatar">
+          <img src="https://mc-heads.net/avatar/${encodeURIComponent(m.name)}/64"
+               alt="${m.name}"
+               onerror="this.src='https://mc-heads.net/avatar/MHF_Steve/64'"
+               loading="lazy">
+        </div>
+        <div class="member-info">
+          <div class="member-name">${m.name}</div>
+          <div class="member-rank">${m.rank}</div>
+        </div>
+        <div class="member-status">
+          <span class="status-pill">ACTIVE</span>
+        </div>
+      </div>
+    `).join('');
+  }
+</script>
+
+</body>
+</html>

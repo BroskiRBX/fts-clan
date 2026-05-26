@@ -406,7 +406,7 @@ main {
   align-items: center;
   padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--border);
-  transition: background 0.15s;
+  transition: background 0.15s, opacity 0.2s;
 }
 
 .member-row:last-child {
@@ -431,6 +431,7 @@ main {
   border: 1px solid var(--border-2);
   padding: 4px;
   position: relative;
+  transition: filter 0.2s;
 }
 
 .member-avatar img {
@@ -460,8 +461,10 @@ main {
   color: var(--accent);
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  transition: color 0.2s;
 }
 
+/* Default status pill (kept for fallback) */
 .status-pill {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -470,6 +473,37 @@ main {
   border: 1px solid var(--accent-dim);
   color: var(--accent);
   background: rgba(212, 255, 0, 0.05);
+}
+
+/* Active pill */
+.status-pill.status-active {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+  background: rgba(212, 255, 0, 0.05);
+}
+
+/* Inactive pill */
+.status-pill.status-inactive {
+  border-color: #555;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Inactive member row */
+.member-row.is-inactive {
+  opacity: 0.55;
+}
+
+.member-row.is-inactive .member-avatar {
+  filter: grayscale(0.8);
+}
+
+.member-row.is-inactive .member-rank {
+  color: var(--text-dim);
+}
+
+.member-row.is-inactive:hover {
+  opacity: 0.85;
 }
 
 .loading, .empty, .error {
@@ -485,7 +519,7 @@ main {
 }
 
 /* =================================================
-   ENLIST HERO
+   ENLIST HERO (Join page)
    ================================================= */
 .enlist-hero {
   padding: 5rem 0 4rem;
@@ -534,11 +568,14 @@ main {
 /* =================================================
    APPLICATION FORM V2 - MULTI-STEP
    ================================================= */
+.form-section {
+  padding-bottom: 2rem;
+}
+
 .enlist-form-section {
   max-width: 900px;
 }
 
-/* Progress bar */
 .progress {
   margin-bottom: 3rem;
 }
@@ -612,7 +649,6 @@ main {
   color: var(--text);
 }
 
-/* Form steps */
 .apply-form-v2 {
   position: relative;
 }
@@ -659,7 +695,6 @@ main {
   line-height: 1.6;
 }
 
-/* Form rows (shared) */
 .form-row {
   display: flex;
   flex-direction: column;
@@ -721,7 +756,6 @@ main {
   margin-top: -0.25rem;
 }
 
-/* Step 1: Identity row with live preview */
 .identity-row {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -797,7 +831,6 @@ main {
   transition: background 0.2s;
 }
 
-/* Step 2: Playstyle cards */
 .playstyle-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -863,7 +896,6 @@ main {
   letter-spacing: 1px;
 }
 
-/* Step navigation buttons */
 .step-actions {
   display: flex;
   gap: 1rem;
@@ -919,7 +951,6 @@ main {
   cursor: not-allowed;
 }
 
-/* Step 4: Review card */
 .review-card {
   background: var(--bg-2);
   border: 1px solid var(--border);
@@ -1005,7 +1036,6 @@ main {
   white-space: pre-wrap;
 }
 
-/* Success screen */
 .success-step {
   text-align: center;
   padding: 3rem 0;
@@ -1177,7 +1207,6 @@ main {
     padding: 2rem 0 1.5rem;
   }
 
-  /* Enlist hero on mobile */
   .enlist-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1189,7 +1218,6 @@ main {
     padding: 1.25rem;
   }
 
-  /* Multi-step form on mobile */
   .progress-steps {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;

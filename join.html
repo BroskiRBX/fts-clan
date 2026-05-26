@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FTS / Enlist</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">[ FTS ]</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">/ Home</a>
+      <a href="roster.html" class="nav-link">/ Roster</a>
+      <a href="join.html" class="nav-link active">/ Join</a>
+    </nav>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span class="status-text">RECRUITING</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="enlist-hero">
+    <div class="enlist-hero-left">
+      <div class="kicker">Recruitment Protocol / Active</div>
+      <h1 class="enlist-title">
+        <span class="title-line">THINK</span>
+        <span class="title-line">YOU GOT</span>
+        <span class="title-line accent">WHAT IT TAKES?</span>
+      </h1>
+      <p class="lede" style="max-width: 500px; margin-top: 1.5rem;">
+        Most won't make it through this form. The crew gets two, maybe three new members a year. If you're not serious, close this tab.
+      </p>
+      <a href="#application" class="btn-primary" style="margin-top: 2rem;">Start Application →</a>
+    </div>
+
+    <div class="enlist-hero-right">
+<pre class="ascii-art">
+ ╔═══════════════════╗
+ ║                   ║
+ ║    F  T  S        ║
+ ║                   ║
+ ║  ─────────────    ║
+ ║                   ║
+ ║   ENLISTMENT      ║
+ ║     OFFICE        ║
+ ║                   ║
+ ║   [ STATUS ]      ║
+ ║    > ACTIVE       ║
+ ║                   ║
+ ║   [ SLOTS ]       ║
+ ║    > LIMITED      ║
+ ║                   ║
+ ╚═══════════════════╝</pre>
+    </div>
+  </section>
+
+  <div class="divider">
+    <span class="divider-text">// THE GAUNTLET</span>
+    <span class="divider-line"></span>
+    <span class="divider-text">// FOUR RULES</span>
+  </div>
+
+  <section class="code-section">
+    <div class="code-grid">
+      <div class="code-block">
+        <div class="code-num">RULE.01</div>
+        <h3 class="code-title">Be Active</h3>
+        <p class="code-text">No ghosts. Play regular. Show up for the crew.</p>
+      </div>
+      <div class="code-block">
+        <div class="code-num">RULE.02</div>
+        <h3 class="code-title">Be Real</h3>
+        <p class="code-text">No alts. No impersonators. No fake stories.</p>
+      </div>
+      <div class="code-block">
+        <div class="code-num">RULE.03</div>
+        <h3 class="code-title">Be Loyal</h3>
+        <p class="code-text">Ride for the crew. The crew rides for you.</p>
+      </div>
+      <div class="code-block">
+        <div class="code-num">RULE.04</div>
+        <h3 class="code-title">Be Cool</h3>
+        <p class="code-text">No drama. No snitches. No clowns.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" id="application">
+    <span class="divider-text">// APPLICATION</span>
+    <span class="divider-line"></span>
+    <span class="divider-text" id="formStatus">// STEP 1 / 4</span>
+  </div>
+
+  <section class="form-section enlist-form-section">
+
+    <div class="progress">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 25%;"></div>
+      </div>
+      <div class="progress-steps">
+        <div class="progress-step active" data-step="1">
+          <span class="step-num">01</span>
+          <span class="step-name">Identity</span>
+        </div>
+        <div class="progress-step" data-step="2">
+          <span class="step-num">02</span>
+          <span class="step-name">Profile</span>
+        </div>
+        <div class="progress-step" data-step="3">
+          <span class="step-num">03</span>
+          <span class="step-name">Pitch</span>
+        </div>
+        <div class="progress-step" data-step="4">
+          <span class="step-num">04</span>
+          <span class="step-name">Submit</span>
+        </div>
+      </div>
+    </div>
+
+    <form id="applyForm" class="apply-form-v2">
+
+      <div class="form-step active" data-step="1">
+        <div class="step-header">
+          <h2 class="step-title">Identify Yourself</h2>
+          <p class="step-desc">First, who are you? We need to verify your account.</p>
+        </div>
+
+        <div class="identity-row">
+          <div class="identity-input">
+            <div class="form-row">
+              <label for="username">Minecraft Username <span class="req">*</span></label>
+              <input type="text" id="username" name="username" required maxlength="32" placeholder="Your exact Java username" autocomplete="off">
+            </div>
+            <div class="form-row">
+              <label for="discord">Discord Username <span class="req">*</span></label>
+              <input type="text" id="discord" name="discord" required maxlength="64" placeholder="user.name or user#1234" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="identity-preview">
+            <div class="preview-label">LIVE PREVIEW</div>
+            <div class="preview-skin">
+              <img id="skinPreview" src="https://mc-heads.net/avatar/MHF_Question/128" alt="Skin preview">
+            </div>
+            <div class="preview-name" id="previewName">— enter username —</div>
+            <div class="preview-status">
+              <span class="preview-dot" id="previewDot"></span>
+              <span id="previewStatus">AWAITING INPUT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn-next" data-target="2">Next: Profile →</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="2">
+        <div class="step-header">
+          <h2 class="step-title">Your Profile</h2>
+          <p class="step-desc">Tell us about your playstyle and experience.</p>
+        </div>
+
+        <div class="form-row">
+          <label for="age">Age <span class="req">*</span></label>
+          <input type="number" id="age" name="age" required min="10" max="99" placeholder="How old you are">
+        </div>
+
+        <div class="form-row">
+          <label for="experience">How long have you played Minecraft?</label>
+          <input type="text" id="experience" name="experience" maxlength="32" placeholder="e.g. 5 years, since 2015, etc">
+        </div>
+
+        <div class="form-row">
+          <label>Your Playstyle <span class="req">*</span></label>
+          <div class="playstyle-grid">
+            <label class="playstyle-card">
+              <input type="radio" name="playstyle" value="PvPer" required>
+              <div class="playstyle-content">
+                <div class="playstyle-icon">⚔</div>
+                <div class="playstyle-name">PvPer</div>
+                <div class="playstyle-desc">Combat focused</div>
+              </div>
+            </label>
+            <label class="playstyle-card">
+              <input type="radio" name="playstyle" value="Builder" required>
+              <div class="playstyle-content">
+                <div class="playstyle-icon">▣</div>
+                <div class="playstyle-name">Builder</div>
+                <div class="playstyle-desc">Creative architect</div>
+              </div>
+            </label>
+            <label class="playstyle-card">
+              <input type="radio" name="playstyle" value="Redstoner" required>
+              <div class="playstyle-content">
+                <div class="playstyle-icon">⚡</div>
+                <div class="playstyle-name">Redstoner</div>
+                <div class="playstyle-desc">Engineering minded</div>
+              </div>
+            </label>
+            <label class="playstyle-card">
+              <input type="radio" name="playstyle" value="Survivalist" required>
+              <div class="playstyle-content">
+                <div class="playstyle-icon">▲</div>
+                <div class="playstyle-name">Survivalist</div>
+                <div class="playstyle-desc">Grinder, gatherer</div>
+              </div>
+            </label>
+            <label class="playstyle-card">
+              <input type="radio" name="playstyle" value="Explorer" required>
+              <div class="playstyle-content">
+                <div class="playstyle-icon">◈</div>
+                <div class="playstyle-name">Explorer</div>
+                <div class="playstyle-desc">Adventurer</div>
+              </div>
+            </label>
+            <label class="playstyle-card">
+              <input type="radio" name="playstyle" value="All-Around" required>
+              <div class="playstyle-content">
+                <div class="playstyle-icon">★</div>
+                <div class="playstyle-name">All-Around</div>
+                <div class="playstyle-desc">Jack of all trades</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn-back" data-target="1">← Back</button>
+          <button type="button" class="btn-next" data-target="3">Next: Pitch →</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="3">
+        <div class="step-header">
+          <h2 class="step-title">Make Your Pitch</h2>
+          <p class="step-desc">This is where it counts. Why should we let you in?</p>
+        </div>
+
+        <div class="form-row">
+          <label for="reason">Why do you want to join FTS? <span class="req">*</span></label>
+          <textarea id="reason" name="reason" required maxlength="500" rows="6" placeholder="Tell us what makes you different. Don't say 'because it looks cool' or 'I'm a good player'. Be specific. Be real."></textarea>
+          <div class="char-count"><span id="charCount">0</span> / 500</div>
+        </div>
+
+        <div class="form-row">
+          <label for="referral">Referred By</label>
+          <input type="text" id="referral" name="referral" maxlength="32" placeholder="Which member sent you? (optional)">
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn-back" data-target="2">← Back</button>
+          <button type="button" class="btn-next" data-target="4">Review →</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="4">
+        <div class="step-header">
+          <h2 class="step-title">Final Review</h2>
+          <p class="step-desc">Check it. If anything's wrong, go back and fix it. Once submitted, that's it.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <span>APPLICATION FILE</span>
+            <span id="reviewTimestamp">—</span>
+          </div>
+          <div class="review-body">
+            <div class="review-avatar">
+              <img id="reviewAvatar" src="https://mc-heads.net/avatar/MHF_Question/96" alt="">
+            </div>
+            <div class="review-fields">
+              <div class="review-field"><span class="review-label">USERNAME</span><span class="review-value" id="reviewUsername">—</span></div>
+              <div class="review-field"><span class="review-label">DISCORD</span><span class="review-value" id="reviewDiscord">—</span></div>
+              <div class="review-field"><span class="review-label">AGE</span><span class="review-value" id="reviewAge">—</span></div>
+              <div class="review-field"><span class="review-label">EXPERIENCE</span><span class="review-value" id="reviewExperience">—</span></div>
+              <div class="review-field"><span class="review-label">PLAYSTYLE</span><span class="review-value" id="reviewPlaystyle">—</span></div>
+              <div class="review-field"><span class="review-label">REFERRED</span><span class="review-value" id="reviewReferral">—</span></div>
+            </div>
+          </div>
+          <div class="review-pitch">
+            <div class="review-label">PITCH</div>
+            <p id="reviewReason">—</p>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn-back" data-target="3">← Back</button>
+          <button type="submit" class="btn-primary btn-submit" id="submitBtn">
+            <span class="btn-text">Transmit Application</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-step success-step" data-step="success">
+        <div class="success-stamp">
+          <div class="stamp-text">RECEIVED</div>
+          <div class="stamp-meta">FTS-RECRUITMENT</div>
+        </div>
+        <h2 class="success-title">Application Transmitted</h2>
+        <p class="success-text">
+          Your file has been delivered to the crew. If you make the cut, a member will reach out on Discord within 7 days. If you don't hear back, we passed.
+        </p>
+        <div class="success-actions">
+          <a href="index.html" class="btn-primary">← Return to Base</a>
+          <a href="roster.html" class="btn-secondary">View Current Roster</a>
+        </div>
+      </div>
+
+      <div class="form-step error-step" data-step="error">
+        <h2 class="success-title" style="color: var(--danger);">Transmission Failed</h2>
+        <p class="success-text">
+          Something went wrong sending your application. Try again, or DM 8rahski directly on Discord.
+        </p>
+        <div class="success-actions">
+          <button type="button" class="btn-primary" onclick="location.reload()">Try Again</button>
+        </div>
+      </div>
+
+    </form>
+  </section>
+
+  <div class="divider">
+    <span class="divider-text">// END</span>
+    <span class="divider-line"></span>
+    <span class="divider-text">// AWAITING SUBMISSIONS</span>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">CREW</div>
+      <div class="footer-value">FTS / 2026</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">STATUS</div>
+      <div class="footer-value accent">RECRUITING</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">MOTTO</div>
+      <div class="footer-value">STAY UNGOVERNABLE</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // =====================================================
+  // PASTE YOUR DISCORD WEBHOOK URL BETWEEN THE QUOTES BELOW
+  // =====================================================
+  const WEBHOOK_URL = "PASTE_YOUR_WEBHOOK_URL_HERE";
+
+  // =====================================================
+  // DON'T EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING
+  // =====================================================
+
+  const form = document.getElementById('applyForm');
+  const usernameField = document.getElementById('username');
+  const skinPreview = document.getElementById('skinPreview');
+  const previewName = document.getElementById('previewName');
+  const previewStatus = document.getElementById('previewStatus');
+  const previewDot = document.getElementById('previewDot');
+  const reasonField = document.getElementById('reason');
+  const charCountEl = document.getElementById('charCount');
+  const progressFill = document.getElementById('progressFill');
+  const formStatus = document.getElementById('formStatus');
+  let currentStep = 1;
+  let skinDebounce;
+
+  usernameField.addEventListener('input', () => {
+    const name = usernameField.value.trim();
+    previewName.textContent = name || '— enter username —';
+
+    clearTimeout(skinDebounce);
+    if (!name) {
+      skinPreview.src = 'https://mc-heads.net/avatar/MHF_Question/128';
+      previewStatus.textContent = 'AWAITING INPUT';
+      previewDot.style.background = '';
+      return;
+    }
+
+    previewStatus.textContent = 'VERIFYING...';
+    previewDot.style.background = '';
+    skinDebounce = setTimeout(() => {
+      skinPreview.src = `https://mc-heads.net/avatar/${encodeURIComponent(name)}/128`;
+      skinPreview.onload = () => {
+        previewStatus.textContent = 'VERIFIED';
+        previewDot.style.background = 'var(--accent)';
+      };
+      skinPreview.onerror = () => {
+        previewStatus.textContent = 'NOT FOUND';
+        previewDot.style.background = 'var(--danger)';
+      };
+    }, 400);
+  });
+
+  reasonField.addEventListener('input', () => {
+    charCountEl.textContent = reasonField.value.length;
+  });
+
+  function goToStep(step) {
+    if (typeof step === 'number' && step > currentStep) {
+      if (!validateStep(currentStep)) return;
+    }
+
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+
+    if (typeof step === 'number') {
+      currentStep = step;
+      progressFill.style.width = (step * 25) + '%';
+      formStatus.textContent = `// STEP ${step} / 4`;
+
+      document.querySelectorAll('.progress-step').forEach(p => {
+        const pStep = parseInt(p.dataset.step);
+        p.classList.toggle('active', pStep === step);
+        p.classList.toggle('completed', pStep < step);
+      });
+
+      if (step === 4) populateReview();
+
+      window.scrollTo({ top: document.getElementById('application').offsetTop - 20, behavior: 'smooth' });
+    } else {
+      progressFill.style.width = '100%';
+      formStatus.textContent = step === 'success' ? '// TRANSMISSION COMPLETE' : '// TRANSMISSION FAILED';
+    }
+  }
+
+  function validateStep(step) {
+    const stepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+    const inputs = stepEl.querySelectorAll('input[required]:not([type="radio"]), textarea[required], select[required]');
+    for (const input of inputs) {
+      if (!input.value.trim()) {
+        input.focus();
+        input.style.borderColor = 'var(--danger)';
+        setTimeout(() => input.style.borderColor = '', 2000);
+        return false;
+      }
+    }
+    if (step === 2) {
+      const playstyle = form.querySelector('input[name="playstyle"]:checked');
+      if (!playstyle) {
+        alert('Pick a playstyle');
+        return false;
+      }
+    }
+    return true;
+  }
+
+  document.querySelectorAll('.btn-next').forEach(btn => {
+    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.target)));
+  });
+  document.querySelectorAll('.btn-back').forEach(btn => {
+    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.target)));
+  });
+
+  function populateReview() {
+    document.getElementById('reviewUsername').textContent = form.username.value;
+    document.getElementById('reviewDiscord').textContent = form.discord.value;
+    document.getElementById('reviewAge').textContent = form.age.value;
+    document.getElementById('reviewExperience').textContent = form.experience.value || 'Not specified';
+    const playstyle = form.querySelector('input[name="playstyle"]:checked');
+    document.getElementById('reviewPlaystyle').textContent = playstyle ? playstyle.value : '—';
+    document.getElementById('reviewReferral').textContent = form.referral.value || 'None';
+    document.getElementById('reviewReason').textContent = form.reason.value;
+    document.getElementById('reviewAvatar').src = `https://mc-heads.net/avatar/${encodeURIComponent(form.username.value)}/96`;
+
+    const now = new Date();
+    const stamp = now.toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+    document.getElementById('reviewTimestamp').textContent = stamp;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (WEBHOOK_URL === "PASTE_YOUR_WEBHOOK_URL_HERE" || !WEBHOOK_URL) {
+      alert('Form not configured. Webhook URL is missing.');
+      return;
+    }
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.querySelector('.btn-text').textContent = 'Transmitting...';
+
+    const playstyle = form.querySelector('input[name="playstyle"]:checked').value;
+
+    const embed = {
+      embeds: [{
+        title: '📋 New FTS Application',
+        color: 13959680,
+        fields: [
+          { name: '🎮 Minecraft Username', value: form.username.value, inline: true },
+          { name: '🎂 Age', value: form.age.value, inline: true },
+          { name: '💬 Discord', value: form.discord.value, inline: true },
+          { name: '⏱ Experience', value: form.experience.value || 'Not specified', inline: true },
+          { name: '⚔ Playstyle', value: playstyle, inline: true },
+          { name: '🤝 Referred By', value: form.referral.value || 'None', inline: true },
+          { name: '📝 Why They Want In', value: form.reason.value }
+        ],
+        thumbnail: { url: `https://mc-heads.net/avatar/${encodeURIComponent(form.username.value)}/128` },
+        footer: { text: 'FTS Recruitment System' },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(embed)
+      });
+      if (!response.ok) throw new Error('Discord rejected the submission');
+      goToStep('success');
+    } catch (error) {
+      goToStep('error');
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FTS / Join</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">[ FTS ]</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">/ Home</a>
+      <a href="roster.html" class="nav-link">/ Roster</a>
+      <a href="join.html" class="nav-link active">/ Join</a>
+    </nav>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span class="status-text">ONLINE</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HEADER -->
+  <section class="roster-top">
+    <div class="kicker">Recruitment // Apply</div>
+    <h1 class="page-title">Enlist</h1>
+    <p class="lede" style="max-width: 600px; margin-top: 2rem;">
+      We don't take everyone. Show us you're worth it. Submit your application and a current member will get back to you if you make the cut.
+    </p>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <span class="divider-text">// REQUIREMENTS</span>
+    <span class="divider-line"></span>
+    <span class="divider-text">// READ FIRST</span>
+  </div>
+
+  <!-- REQUIREMENTS -->
+  <section class="code-section">
+    <div class="code-grid">
+      <div class="code-block">
+        <div class="code-num">REQ.01</div>
+        <h3 class="code-title">Be Active</h3>
+        <p class="code-text">No ghosts. Play regularly, show up for the crew.</p>
+      </div>
+      <div class="code-block">
+        <div class="code-num">REQ.02</div>
+        <h3 class="code-title">Be Real</h3>
+        <p class="code-text">No alts, no impersonators, no fake stories.</p>
+      </div>
+      <div class="code-block">
+        <div class="code-num">REQ.03</div>
+        <h3 class="code-title">Be Loyal</h3>
+        <p class="code-text">If you ride for the crew, the crew rides for you.</p>
+      </div>
+      <div class="code-block">
+        <div class="code-num">REQ.04</div>
+        <h3 class="code-title">Be Cool</h3>
+        <p class="code-text">No drama. No snitches. No clowns.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <span class="divider-text">// APPLICATION</span>
+    <span class="divider-line"></span>
+    <span class="divider-text" id="formStatus">// READY</span>
+  </div>
+
+  <!-- FORM -->
+  <section class="form-section">
+    <form id="applyForm" class="apply-form">
+
+      <div class="form-row">
+        <label for="username">Minecraft Username <span class="req">*</span></label>
+        <input type="text" id="username" name="username" required maxlength="32" placeholder="Your exact Java username">
+      </div>
+
+      <div class="form-row">
+        <label for="age">Age <span class="req">*</span></label>
+        <input type="number" id="age" name="age" required min="10" max="99" placeholder="How old you are">
+      </div>
+
+      <div class="form-row">
+        <label for="discord">Discord Username <span class="req">*</span></label>
+        <input type="text" id="discord" name="discord" required maxlength="64" placeholder="user.name or user#1234">
+      </div>
+
+      <div class="form-row">
+        <label for="experience">Years Playing Minecraft</label>
+        <input type="text" id="experience" name="experience" maxlength="32" placeholder="e.g. 5 years">
+      </div>
+
+      <div class="form-row">
+        <label for="playstyle">Your Playstyle <span class="req">*</span></label>
+        <select id="playstyle" name="playstyle" required>
+          <option value="">— select one —</option>
+          <option value="PvPer">PvPer</option>
+          <option value="Builder">Builder</option>
+          <option value="Redstoner">Redstoner</option>
+          <option value="Survivalist">Survivalist</option>
+          <option value="Explorer">Explorer</option>
+          <option value="All-Around">All-Around</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="reason">Why do you want to join FTS? <span class="req">*</span></label>
+        <textarea id="reason" name="reason" required maxlength="500" rows="4" placeholder="Tell us why we should let you in. Keep it real."></textarea>
+        <div class="char-count"><span id="charCount">0</span> / 500</div>
+      </div>
+
+      <div class="form-row">
+        <label for="referral">Referred By</label>
+        <input type="text" id="referral" name="referral" maxlength="32" placeholder="Which member sent you? (optional)">
+      </div>
+
+      <div class="form-row">
+        <button type="submit" class="btn-primary" id="submitBtn">
+          Submit Application →
+        </button>
+      </div>
+
+      <div id="formMessage" class="form-message" style="display:none;"></div>
+
+    </form>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <span class="divider-text">// END</span>
+    <span class="divider-line"></span>
+    <span class="divider-text">// AWAITING SUBMISSIONS</span>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-label">CREW</div>
+      <div class="footer-value">FTS / 2026</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">STATUS</div>
+      <div class="footer-value accent">RECRUITING</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">MOTTO</div>
+      <div class="footer-value">STAY UNGOVERNABLE</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // =====================================================
+  // PASTE YOUR DISCORD WEBHOOK URL BETWEEN THE QUOTES BELOW
+  // =====================================================
+  const WEBHOOK_URL = "PASTE_YOUR_WEBHOOK_URL_HERE";
+
+  // =====================================================
+  // Don't edit below this line unless you know what you're doing
+  // =====================================================
+
+  const form = document.getElementById('applyForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const messageEl = document.getElementById('formMessage');
+  const statusEl = document.getElementById('formStatus');
+  const reasonField = document.getElementById('reason');
+  const charCountEl = document.getElementById('charCount');
+
+  // Character counter
+  reasonField.addEventListener('input', () => {
+    charCountEl.textContent = reasonField.value.length;
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Check webhook is set
+    if (WEBHOOK_URL === "PASTE_YOUR_WEBHOOK_URL_HERE" || !WEBHOOK_URL) {
+      showMessage('Form not configured yet. Webhook URL is missing.', 'error');
+      return;
+    }
+
+    // Disable button
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    statusEl.textContent = '// TRANSMITTING';
+
+    // Build the data
+    const data = {
+      username: form.username.value.trim(),
+      age: form.age.value,
+      discord: form.discord.value.trim(),
+      experience: form.experience.value.trim() || 'Not specified',
+      playstyle: form.playstyle.value,
+      reason: form.reason.value.trim(),
+      referral: form.referral.value.trim() || 'None'
+    };
+
+    // Build Discord embed
+    const embed = {
+      embeds: [{
+        title: '📋 New FTS Application',
+        color: 13959680, // hazard yellow
+        fields: [
+          { name: '🎮 Minecraft Username', value: data.username, inline: true },
+          { name: '🎂 Age', value: data.age, inline: true },
+          { name: '💬 Discord', value: data.discord, inline: true },
+          { name: '⏱ Experience', value: data.experience, inline: true },
+          { name: '⚔ Playstyle', value: data.playstyle, inline: true },
+          { name: '🤝 Referred By', value: data.referral, inline: true },
+          { name: '📝 Why They Want In', value: data.reason }
+        ],
+        thumbnail: { url: `https://mc-heads.net/avatar/${encodeURIComponent(data.username)}/128` },
+        footer: { text: 'FTS Recruitment System' },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(embed)
+      });
+
+      if (!response.ok) throw new Error('Discord rejected the submission');
+
+      showMessage('Application submitted. A member will review and get back to you on Discord if you make the cut.', 'success');
+      statusEl.textContent = '// RECEIVED';
+      form.reset();
+      charCountEl.textContent = '0';
+
+    } catch (error) {
+      showMessage('Something went wrong. Try again or DM 8rahski on Discord directly.', 'error');
+      statusEl.textContent = '// ERROR';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Application →';
+    }
+  });
+
+  function showMessage(text, type) {
+    messageEl.textContent = text;
+    messageEl.className = 'form-message ' + type;
+    messageEl.style.display = 'block';
+    messageEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+
+</body>
+</html>
